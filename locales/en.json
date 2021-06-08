@@ -1,0 +1,24 @@
+{
+    "app": {
+        "name": "Video",
+        "description": "Broadcast a video.",
+        "author": {
+            "name": "DynamicScreen",
+            "email": "bonjour@dynamicscreen.com",
+            "note": "Not this time"
+        }
+    },
+    "privileges": {
+        "needs_account": {
+            "google": {
+                "why": "This privilege is required to access your drive"
+            }
+        }
+    },
+    "modules": {
+        "simple_message": {
+            "name": "Video",
+            "description": "Display a video, very basic."
+        }
+    }
+}

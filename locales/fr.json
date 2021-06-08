@@ -1,0 +1,24 @@
+{
+    "app": {
+        "name": "Vidéo",
+        "description": "Diffuse une vidéo.",
+        "author": {
+            "name": "DynamicScreen",
+            "email": "bonjour@dynamicscreen.com",
+            "note": "Pas de tips cette fois ci"
+        }
+    },
+    "privileges": {
+        "needs_account": {
+            "google": {
+                "why": "Cette authorisation est nécessaire afin d'accéder aux video sur votre drive."
+            }
+        }
+    },
+    "modules": {
+        "image": {
+            "name": "Vidéo",
+            "description": "Diffuse une vidéo, pas compliqué.."
+        }
+    }
+}
