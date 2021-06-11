@@ -16,7 +16,7 @@
         }
     },
     "modules": {
-        "image": {
+        "video": {
             "name": "Vidéo",
             "description": "Diffuse une vidéo, pas compliqué.."
         }

@@ -11,12 +11,12 @@
     "privileges": {
         "needs_account": {
             "google": {
-                "why": "This privilege is required to access your drive"
+                "why": "This privilege is required to access videos on your drive"
             }
         }
     },
     "modules": {
-        "simple_message": {
+        "video": {
             "name": "Video",
             "description": "Display a video, very basic."
         }
