@@ -14,8 +14,8 @@
 
 import {defineComponent} from "vue";
 import i18next from "i18next";
-import en from "../../app-video/languages/en.json";
-import fr from "../../app-video/languages/fr.json";
+import en from "../languages/en.json";
+import fr from "../languages/fr.json";
 
 export default defineComponent({
   name: "Video",
@@ -55,7 +55,7 @@ export default defineComponent({
       this.url = this.media.url
     },
   }
-}
+});
 </script>
 
 <style scoped>
