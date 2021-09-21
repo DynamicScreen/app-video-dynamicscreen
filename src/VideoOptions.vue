@@ -45,8 +45,8 @@
 <script>
 import {defineComponent} from "vue";
 import i18next from "i18next";
-import en from "../languages/en.json";
-import fr from "../languages/fr.json";
+import en from "./../languages/en.json";
+import fr from "./../languages/fr.json";
 
 export default defineComponent({
     name: "VideoOptions",

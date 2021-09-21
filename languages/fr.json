@@ -1,7 +1,7 @@
 {
     "app": {
-        "name": "Vidéo",
-        "description": "Diffuse une vidéo.",
+        "name": "Video",
+        "description": "Diffuse une video.",
         "author": {
             "name": "DynamicScreen",
             "email": "bonjour@dynamicscreen.com",

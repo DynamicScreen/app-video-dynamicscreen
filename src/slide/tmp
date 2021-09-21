@@ -1,0 +1,133 @@
+<!--import {defineComponent, onMounted, onDeactivated} from "vue";-->
+<!--import i18next from "i18next";-->
+<!--import en from "../../languages/en.json";-->
+<!--import fr from "../../languages/fr.json";-->
+
+<!--export default defineComponent({-->
+<!--  props: { context: {type: Object} },-->
+<!--  data() {-->
+<!--    return {-->
+<!--      url: null,-->
+<!--      player: null,-->
+<!--      db: null,-->
+<!--      videoLoaded: false,-->
+<!--      forcingPlay: false,-->
+<!--      buffer: null,-->
+<!--      oldBlobUrl: null,-->
+<!--      screenReloadTimeout: null,-->
+<!--      subtitle: null,-->
+<!--      initialized: false,-->
+<!--      // screenOnEndedTimeout: null,-->
+<!--      hasBeenInitialized: false,-->
+<!--    }-->
+<!--  },-->
+<!--  mounted() {-->
+<!--    // this.initI18n();-->
+<!--    // this.initSlideVideo();-->
+<!--  },-->
+<!--  setup(props, ctx) {-->
+<!--    let player = null;-->
+<!--    let url: null;-->
+<!--    let player: null;-->
+<!--    let db: null;-->
+<!--    let videoLoaded: false;-->
+<!--    let forcingPlay: false;-->
+<!--    let buffer: null;-->
+<!--    let oldBlobUrl: null;-->
+<!--    let screenReloadTimeout: null;-->
+<!--    let subtitle: null;-->
+<!--    let initialized: false;-->
+<!--    let hasBeenInitialized: false;-->
+
+<!--    onMounted(() => {-->
+<!--      initPlayer();-->
+<!--    })-->
+
+<!--    const _canPlayThrough = () => {-->
+<!--      this.player.play();-->
+<!--    };-->
+
+<!--    const onWaiting = () => {-->
+<!--      if (!this.screenReloadTimeout) {-->
+<!--        this.screenReloadTimeout = setTimeout(() => {-->
+<!--          window.location.reload(true);-->
+<!--        }, 7000);-->
+<!--      }-->
+<!--    };-->
+
+<!--    const onPlaying = () => {-->
+<!--      if (this.screenReloadTimeout) {-->
+<!--        clearTimeout(this.screenReloadTimeout);-->
+<!--        this.screenReloadTimeout = null;-->
+<!--      }-->
+<!--    };-->
+
+<!--    const onEnded = () => {-->
+<!--      _canPlayThrough();-->
+<!--    };-->
+
+<!--    onDeactivated(() => {-->
+<!--      player.pause();-->
+
+<!--      player.removeEventListener('canplaythrough', _canPlayThrough);-->
+<!--      player.removeEventListener('ended', onEnded);-->
+<!--      player.removeEventListener('waiting', onWaiting);-->
+<!--      player.removeEventListener('playing', onPlaying);-->
+<!--    });-->
+
+<!--    const initSlideVideo = () => {-->
+<!--      initPlayer();-->
+<!--      url = props.media.url-->
+<!--      setVideoUrl(url);-->
+<!--      initialized = true;-->
+<!--    },-->
+
+<!--    return { player, initPlayer, onPlaying, onWaiting, onEnded, _canPlayThrough };-->
+<!--  },-->
+<!--  activated() {-->
+<!--    // this.initSlideVideo();-->
+<!--  },-->
+
+<!--  beforeUnmount() {-->
+<!--    this.player.pause();-->
+<!--    this.player.src = '';-->
+<!--    this.player.load();-->
+<!--  },-->
+<!--  methods: {-->
+<!--    startVideo() {-->
+<!--      this.player.currentTime = 0;-->
+<!--    },-->
+<!--    stopVideo() {-->
+<!--      this.player.pause()-->
+<!--    },-->
+<!--    togglePauseVideo(){-->
+<!--      if(this.player.paused){-->
+<!--        this.player.play();-->
+<!--      }-->
+<!--      else {-->
+<!--        this.player.pause();-->
+<!--      }-->
+<!--    },-->
+<!--    setVideoUrl(videoUrl) {-->
+<!--      this.videoLoaded = true;-->
+<!--      this.player.src = videoUrl;-->
+<!--      this.player.load();-->
+<!--      this.startVideo();-->
+<!--    },-->
+<!--    videoIsPlaying() {-->
+<!--      return this.player.currentTime > 0 && !this.player.paused && !this.player.ended-->
+<!--    },-->
+<!--  },-->
+<!--  computed: {-->
+<!--    slide() {-->
+<!--      return this.context.slide;-->
+<!--    },-->
+<!--    data() {-->
+<!--      return this.context.slide.data;-->
+<!--    },-->
+<!--    media() {-->
+<!--      return this.data.media;-->
+<!--    },-->
+<!--  }-->
+<!--});-->
+<!--</script>-->
