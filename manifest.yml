@@ -21,7 +21,7 @@ modules:
     type: slide
     description: modules.video.description
     vue:
-      component: src/Video.vue
+      component: src/slide/Module.ts
       options: src/VideoOptions.vue
     php:
       handler: Vendor\DynamicScreenImage\ImageHandler

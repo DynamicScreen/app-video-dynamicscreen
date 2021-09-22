@@ -5,13 +5,13 @@ const path = require('path');
           mode: 'development',
           entry: {
           Video: path.resolve(__dirname, 'src/slide/Module.ts'),
-          VideoOptions: path.resolve(__dirname, 'src/VideoOptions.vue'),
+          VideoOptions: path.resolve(__dirname, 'src/slide/VideoOptions.vue'),
   },
           output: {
             path: path.resolve(__dirname, './dist'),
             publicPath: '/dist/',
             filename: '[name].js',
-            library: ['dynamicscreen.video::0.0.2'],
+            library: ['dynamicscreen.video::0.2.0'],
             libraryTarget: 'window',
           },
           module: {
