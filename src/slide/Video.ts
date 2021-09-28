@@ -6,7 +6,7 @@ import {
   ISlideContext,
   IPublicSlide,
   SlideModule
-} from "../../../../../../../dynamicscreen-sdk-js/src";
+} from "dynamicscreen-sdk-js";
 
 import {VNode, ComponentPublicInstance, computed, ref, Ref} from 'vue';
 import i18next from "i18next";
@@ -61,8 +61,7 @@ export default class VideoSlideModule extends SlideModule {
   initPlayer() {
     // const toto = document.getElementById('video');
     // console.log('element video player', toto)
-    console.log('player class property: ', this.player)
-    console.log('player VALUE class property: ', this.player)
+
     // this.player.value = toto
     // player.addEventListener('canplaythrough', _canPlayThrough);
     // player.addEventListener('ended', onEnded);
@@ -90,7 +89,6 @@ export default class VideoSlideModule extends SlideModule {
 
   // @ts-ignore
   setup(props, ctx) {
-    console.log('VIDEO: in setup function')
     const { h, ref, reactive, computed} = ctx;
     let slide = reactive(props.slide) as IPublicSlide;
     const context = reactive(props.slide.context) as ISlideContext;
@@ -100,7 +98,6 @@ export default class VideoSlideModule extends SlideModule {
     this.context = context
 
     context.onPrepare(async () => {
-      console.log('VIDEO: onPrepare')
       await context.assetsStorage().then(async (ability: IAssetsStorageAbility) => {
         this.initI18n();
         this.initPlayer();
