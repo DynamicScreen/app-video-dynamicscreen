@@ -1,8 +1,8 @@
 # YAML
-id: dynamicscreen.video
+id: app-dynamicscreen-video
 name: app.name
 description: app.description
-logo: fa fa-video
+logo: app.logo
 version: 0.2.0
 channel: stable
 api-level: 1
