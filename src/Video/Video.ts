@@ -96,7 +96,7 @@ export default class VideoSlideModule extends SlideModule {
       await context.assetsStorage().then(async (ability: IAssetsStorageAbility) => {
         this.initI18n();
         this.initPlayer();
-        url.value = await ability.getDisplayableAsset(slide.data.media.url).then((asset) => asset.displayableUrl());
+        url.value = await ability.getDisplayableAsset(slide.data.url).then((asset) => asset.displayableUrl());
       });
     });
 
