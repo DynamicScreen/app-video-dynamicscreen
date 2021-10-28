@@ -1,24 +1,31 @@
 {
-    "app": {
-        "name": "Video",
-        "description": "Broadcast a video.",
-        "author": {
-            "name": "DynamicScreen",
-            "email": "bonjour@dynamicscreen.com",
-            "note": "Not this time"
-        }
-    },
-    "privileges": {
-        "needs_account": {
-            "google": {
-                "why": "This privilege is required to access videos on your drive"
-            }
-        }
-    },
-    "modules": {
-        "video": {
-            "name": "Video",
-            "description": "Display a video, very basic."
-        }
+  "app": {
+    "name": "Video",
+    "logo": "fa fa-play",
+    "description": "Broadcast a video.",
+    "author": {
+      "name": "DynamicScreen",
+      "email": "bonjour@dynamicscreen.com",
+      "note": "Note this time"
     }
+  },
+  "privileges": {
+    "needs_media": {
+      "video": {
+        "why": "This indicates media is/are required."
+      }
+    }
+  },
+  "modules": {
+    "video": {
+      "name": "Video",
+      "description": "Display a video, very basic.",
+      "options": {
+        "media-picker": {
+          "label": "Video to broadcast",
+          "help": "help text"
+        }
+      }
+    }
+  }
 }

@@ -1,24 +1,31 @@
 {
-    "app": {
-        "name": "Video",
-        "description": "Diffuse une video.",
-        "author": {
-            "name": "DynamicScreen",
-            "email": "bonjour@dynamicscreen.com",
-            "note": "Pas de tips cette fois ci"
-        }
-    },
-    "privileges": {
-        "needs_account": {
-            "google": {
-                "why": "Cette authorisation est nécessaire afin d'accéder aux video sur votre drive."
-            }
-        }
-    },
-    "modules": {
-        "video": {
-            "name": "Vidéo",
-            "description": "Diffuse une vidéo, pas compliqué.."
-        }
+  "app": {
+    "name": "Video",
+    "logo": "fa fa-play",
+    "description": "Diffuse une video.",
+    "author": {
+      "name": "DynamicScreen",
+      "email": "bonjour@dynamicscreen.com",
+      "note": "Pas de tips cette fois ci !"
     }
+  },
+  "privileges": {
+    "needs_media": {
+      "video": {
+        "why": "Ce privilège indique qu'un ou plusieurs fichiers sont requis."
+      }
+    }
+  },
+  "modules": {
+    "video": {
+      "name": "Vidéo",
+      "description": "Diffuse une vidéo, pas compliqué..",
+      "options": {
+        "media-picker": {
+          "label": "Video à Diffuser",
+          "help": "help text"
+        }
+      }
+    }
+  }
 }
