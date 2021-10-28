@@ -8,18 +8,14 @@ import {
   SlideModule
 } from "dynamicscreen-sdk-js";
 
-import {VNode, ComponentPublicInstance, computed, ref, Ref} from 'vue';
 import i18next from "i18next";
 
 const en = require("../../languages/en.json");
 const fr = require("../../languages/fr.json");
 
 export default class VideoSlideModule extends SlideModule {
-  public player: Ref<HTMLElement | null>;
-
   constructor(context: ISlideContext) {
     super(context);
-    this.player = ref(null);
   }
 
   trans(key: string) {
@@ -94,7 +90,6 @@ export default class VideoSlideModule extends SlideModule {
     const context = reactive(props.slide.context) as ISlideContext;
     const url = ref("");
 
-    this.player =  ref() as Ref<HTMLElement | null>;
     this.context = context
 
     context.onPrepare(async () => {
@@ -151,6 +146,6 @@ export default class VideoSlideModule extends SlideModule {
           style: videoStyle,
         }),
       ]),
-    ]) as VNode
+    ])
   }
 }

@@ -5,28 +5,30 @@ description: app.description
 logo: app.logo
 version: 0.2.0
 channel: stable
+color: blue
 api-level: 1
 author:
   name: DynamicScreen
   email: bonjour@dynamicscreen.com
   note: author.note
 privileges:
-    needs_account:
-        -   identifier: google23
-            type: google
-            why: privileges.needs_account.google.why
-        -   identifier: microsoft23
-            type: microsoft
-            why: privileges.needs_account.microsoft.why
+  needs_media:
+    - identifier: video-medias
+      type: video
+      why: privileges.needs_media.video.why
 modules:
   - name: modules.video.name
     identifier: video
     type: slide
     description: modules.video.description
-    vue:
-      component: src/slide/Video.ts
-      options: src/VideoOptions.vue
-    php:
-      handler: Vendor\DynamicScreenImage\ImageHandler
-    node:
-      handler: src/handler.js
+    options:
+      privileges:
+        needs_media:
+          - video-medias
+      vue:
+        component: src/Video/Video.ts
+        options: src/Video/VideoOptions.ts
+      php:
+        handler: \DynamicScreen\Video\Video\VideoSlideHandler
+      node:
+        handler: src/handler.js
