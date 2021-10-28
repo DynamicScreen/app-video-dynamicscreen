@@ -55,18 +55,7 @@ export default class VideoSlideModule extends SlideModule {
   }
 
   initPlayer() {
-    // const toto = document.getElementById('video');
-    // console.log('element video player', toto)
 
-    // this.player.value = toto
-    // player.addEventListener('canplaythrough', _canPlayThrough);
-    // player.addEventListener('ended', onEnded);
-    // player.addEventListener('waiting', onWaiting);
-    // player.addEventListener('playing', onPlaying);
-
-    // player.preload = "auto";
-    // player.volume = parseInt(slide.data.volume) / 100
-    // player.muted = slide.data.mute === "1";
   };
 
   initI18n() {

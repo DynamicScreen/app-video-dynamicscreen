@@ -64,18 +64,27 @@ export default class VideoOptionsModule extends SlideModule {
 
   // @ts-ignore
   setup(props, ctx, update: updateValue, OptionsContext) {
-    const { h, reactive, ref } = ctx;
+    const { h } = ctx;
 
-    // const { Field, TextInput, ColorPicker, MediaPicker } = OptionsContext.components
+    const { Field, FieldsRow, TextInput, NumberInput, MediaPicker, ColorPicker } = OptionsContext.components
 
-    console.log('in setup before return h')
     return () =>
       h("div", {}, [
-          // h(Field, { label: "Video à diffuser" }, [
-          //   h(MediaPicker, { ...update("video-medias") })
-          // ]),
-        "TODO"
-        ]
-      )
+        // input type: media hidden ??
+        h(FieldsRow, {}, [
+          h(Field, { label: "Vidéo à diffuser" }, [
+              h(MediaPicker, { ...update("media") })
+            ]),
+            h(Field, { label: "Subtitle" }, [
+              h(TextInput, { ...update("subtitle") })
+            ]),
+            h(Field, { label: "Volume" }, [
+              h(NumberInput, { ...update("volume") })
+            ]),
+            h(Field, { label: "Volume" }, [
+              h(NumberInput, { ...update("volume") })
+            ]),
+          ])
+        ])
   }
 }
