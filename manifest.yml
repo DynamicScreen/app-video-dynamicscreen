@@ -1,27 +1,30 @@
 # YAML
-id: dynamicscreen.video
+id: app-dynamicscreen-video
 name: app.name
 description: app.description
-logo: fa fa-video
+logo: app.logo
 version: 0.2.0
-channel: rc
+channel: stable
 api-level: 1
 author:
   name: DynamicScreen
   email: bonjour@dynamicscreen.com
   note: author.note
 privileges:
-  needs_account:
-    - type: google
-      why: privileges.needs_account.google.why
-    - type: microsoft
-      why: privileges.needs_account.microsoft.why
+    needs_account:
+        -   identifier: google23
+            type: google
+            why: privileges.needs_account.google.why
+        -   identifier: microsoft23
+            type: microsoft
+            why: privileges.needs_account.microsoft.why
 modules:
   - name: modules.video.name
+    identifier: video
     type: slide
     description: modules.video.description
     vue:
-      component: src/Video.vue
+      component: src/slide/Video.ts
       options: src/VideoOptions.vue
     php:
       handler: Vendor\DynamicScreenImage\ImageHandler
