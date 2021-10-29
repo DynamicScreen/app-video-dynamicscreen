@@ -22,7 +22,7 @@ class VideoSlideHandler extends SlideHandler
             $mediaAccessKey = Arr::first($mediaAccessKey);
         }
 
-        $medias = collect($slide->getOption("medias.$mediaAccessKey"));
+        $medias = collect($slide->getMedias([$mediaAccessKey]));
 
         if ($medias->isEmpty()) {
             return [];
