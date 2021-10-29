@@ -22,13 +22,13 @@ class VideoSlideHandler extends SlideHandler
             $mediaAccessKey = Arr::first($mediaAccessKey);
         }
 
-        $medias = $slide->getOption($mediaAccessKey);
+        $medias = collect($slide->getOption("medias.$mediaAccessKey"));
 
-        if (!$medias) {
+        if ($medias->isEmpty()) {
             return [];
         }
 
-        return $medias->map(function ($media) use ($slide) {
+        return collect($medias)->map(function ($media) use ($slide) {
             return [
                 'media' => $media,
                 'size' => Arr::get($media, 'size'),
@@ -38,7 +38,7 @@ class VideoSlideHandler extends SlideHandler
                 'volume' => $slide->getOption('volume', 50),
                 'mute' => $slide->getOption('mute', false),
             ];
-        });
+        })->toArray();
     }
 
     public function needed_medias()
