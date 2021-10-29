@@ -5,7 +5,8 @@ import {
   IGuardsManager,
   ISlideContext,
   IPublicSlide,
-  SlideModule
+  SlideModule,
+  SlideUpdateFunctions,
 } from "dynamicscreen-sdk-js";
 
 import i18next from "i18next";
@@ -63,24 +64,24 @@ export default class VideoOptionsModule extends SlideModule {
   };
 
   // @ts-ignore
-  setup(props, ctx, update: updateValue, OptionsContext) {
+  setup(props, ctx, update: SlideUpdateFunctions, OptionsContext) {
     const { h } = ctx;
 
-    const { Field, FieldsRow, TextInput, NumberInput, MediaPicker, ColorPicker } = OptionsContext.components
+    const { Field, FieldsRow, TextInput, NumberInput, MediaPicker } = OptionsContext.components
 
     return () => [
       h(FieldsRow, {}, [
         h(Field, { label: "Vidéo à diffuser" }, [
-          h(MediaPicker, { ...update("video-medias") })
+          h(MediaPicker, { ...update.option("video-medias") })
         ]),
         h(Field, { label: "Subtitle" }, [
-          h(TextInput, { ...update("subtitle") })
+          h(TextInput, { ...update.option("subtitle") })
         ]),
         h(Field, { label: "Volume" }, [
-          h(NumberInput, { ...update("volume") })
+          h(NumberInput, { ...update.option("volume") })
         ]),
         h(Field, { label: "Volume" }, [
-          h(NumberInput, { ...update("volume") })
+          h(NumberInput, { ...update.option("volume") })
         ]),
       ])
     ];
