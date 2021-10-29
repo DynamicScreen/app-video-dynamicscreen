@@ -67,19 +67,14 @@ export default class VideoOptionsModule extends SlideModule {
   setup(props, ctx, update: SlideUpdateFunctions, OptionsContext) {
     const { h } = ctx;
 
-    const { Field, FieldsRow, TextInput, NumberInput, MediaPicker } = OptionsContext.components
+    const { Field, FieldsRow, Toggle, NumberInput, MediaPicker } = OptionsContext.components
 
     return () => [
       h(FieldsRow, {}, [
         h(Field, { label: "Vidéo à diffuser" }, [
-          h(MediaPicker, { ...update.option("video-medias") })
+          h(MediaPicker, { type: 'video', ...update.option("video-medias") })
         ]),
-        h(Field, { label: "Subtitle" }, [
-          h(TextInput, { ...update.option("subtitle") })
-        ]),
-        h(Field, { label: "Volume" }, [
-          h(NumberInput, { ...update.option("volume") })
-        ]),
+        h(Toggle, { class: 'flex-1', ...update.option("mute") }, "Mute"),
         h(Field, { label: "Volume" }, [
           h(NumberInput, { ...update.option("volume") })
         ]),
