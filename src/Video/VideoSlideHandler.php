@@ -22,7 +22,7 @@ class VideoSlideHandler extends SlideHandler
             $mediaAccessKey = Arr::first($mediaAccessKey);
         }
 
-        $medias = collect($slide->getMedias([$mediaAccessKey]));
+        $medias = collect($slide->getMedias($mediaAccessKey));
 
         if ($medias->isEmpty()) {
             return [];
@@ -30,10 +30,7 @@ class VideoSlideHandler extends SlideHandler
 
         return collect($medias)->map(function ($media) use ($slide) {
             return [
-                'media' => $media,
-                'size' => Arr::get($media, 'size'),
                 'url' => Arr::get($media, 'url'),
-                'hash' => Arr::get($media, 'hash'),
                 'media_id' => Arr::get($media, 'id'),
                 'volume' => $slide->getOption('volume', 50),
                 'mute' => $slide->getOption('mute', false),
