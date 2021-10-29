@@ -76,7 +76,7 @@ export default class VideoOptionsModule extends SlideModule {
       ]),
       h(FieldsRow, {}, [
         h(Toggle, { class: 'flex-1', ...update.option("mute") }, "Mute"),
-        h(Field, { label: "Volume" }, [
+        h(Field, { class: 'flex-1', label: "Volume" }, [
           h(NumberInput, { min: 0, max: 100, default: 50, ...update.option("volume") })
         ])
       ])
