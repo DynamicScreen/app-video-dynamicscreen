@@ -14,8 +14,6 @@ import i18next from "i18next";
 const en = require("../../languages/en.json");
 const fr = require("../../languages/fr.json");
 
-type updateValue = (key: string) => { modelValue: any, "onUpdate:modelValue": (value: any) => void }
-
 export default class VideoOptionsModule extends SlideModule {
   constructor(context: ISlideContext) {
     super(context);
