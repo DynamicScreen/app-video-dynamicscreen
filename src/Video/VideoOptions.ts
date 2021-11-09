@@ -68,7 +68,6 @@ export default class VideoOptionsModule extends SlideModule {
     const { Field, FieldsRow, Toggle, NumberInput, MediaPicker } = OptionsContext.components
 
     return () => [
-
       h(Field, { label: "Vidéo à diffuser" }, [
         h(MediaPicker, { type: 'video', ...update.option("video-medias") })
       ]),
