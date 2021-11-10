@@ -22,7 +22,7 @@ class VideoSlideHandler extends SlideHandler
             $mediaAccessKey = Arr::first($mediaAccessKey);
         }
 
-        $medias = $slide->getMedias($mediaAccessKey);
+        $medias = $slide->getMedia($mediaAccessKey);
 
         collect($medias)->each(function ($media) use ($slide) {
             $this->addSlide([
