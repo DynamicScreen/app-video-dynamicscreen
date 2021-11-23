@@ -9,10 +9,6 @@ use Illuminate\Support\Arr;
 
 class VideoSlideHandler extends SlideHandler
 {
-    public function __construct(Module $module)
-    {
-        parent::__construct($module);
-    }
 
     public function fetch(ISlide $slide): void
     {
@@ -37,14 +33,5 @@ class VideoSlideHandler extends SlideHandler
     public function needed_medias()
     {
         return $this->module->getOption('privileges.needs_media', false);
-    }
-
-    public function getDefaultOptions(): array
-    {
-        return [
-            'title' => '',
-            'message' => '',
-            'backgroundColor' => '#D42500',
-        ];
     }
 }

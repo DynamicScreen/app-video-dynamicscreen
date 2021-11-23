@@ -1,26 +1,8 @@
 {
-  "name": "dynamicscreen/app-video",
-  "description": "Video app for DynamicScreen SaaS",
-  "license": "MIT",
   "autoload": {
     "psr-4": {
       "DynamicScreen\\Video\\": "src/"
     }
   },
-  "authors": [
-    {
-      "name": "DynamicScreen",
-      "email": "bonjour@dynamicscreen.com"
-    }
-  ],
-  "require": {},
-  "repositories": [
-    {
-      "type": "path",
-      "url": "./../../../../dynamicscreen/sdk-php",
-      "options": {
-        "symlink": true
-      }
-    }
-  ]
+  "require": {}
 }
