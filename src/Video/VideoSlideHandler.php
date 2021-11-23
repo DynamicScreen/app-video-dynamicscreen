@@ -2,7 +2,6 @@
 
 namespace DynamicScreen\Video\Video;
 
-use App\Domain\Module\Model\Module;
 use DynamicScreen\SdkPhp\Handlers\SlideHandler;
 use DynamicScreen\SdkPhp\Interfaces\ISlide;
 use Illuminate\Support\Arr;
