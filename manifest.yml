@@ -2,7 +2,7 @@
 id: app-video-dynamicscreen
 name: app.name
 description: app.description
-logo: app.logo
+logo: color
 version: 0.2.0
 channel: stable
 color: blue
@@ -19,6 +19,7 @@ privileges:
 modules:
   - name: modules.video.name
     identifier: video
+    color: blue
     type: slide
     description: modules.video.description
     options:
