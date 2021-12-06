@@ -2,7 +2,7 @@
 id: app-video-dynamicscreen
 name: app.name
 description: app.description
-logo: color
+logo: fa fa-play
 version: 0.2.0
 channel: stable
 color: blue
