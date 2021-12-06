@@ -18,10 +18,11 @@ privileges:
       why: privileges.needs_media.video.why
 modules:
   - name: modules.video.name
+    description: modules.video.description
     identifier: video
     color: blue
+    logo: fa fa-play
     type: slide
-    description: modules.video.description
     options:
       privileges:
         needs_media:
