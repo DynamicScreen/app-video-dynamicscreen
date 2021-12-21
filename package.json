@@ -2,7 +2,6 @@
   "name": "app-video-dynamicscreen",
   "version": "0.2.0",
   "description": "Video app for DynamicScreen SaaS",
-  "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,7 +12,6 @@
     "url": "git+https://github.com/cormarti/app-video-dynamicscreen.git"
   },
   "dependencies": {
-    "dynamicscreen-sdk-js": "^0.0.20",
     "i18next": "^20.4.0",
     "webpack": "^5.50.0"
   },

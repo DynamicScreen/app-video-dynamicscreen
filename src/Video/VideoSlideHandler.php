@@ -28,9 +28,4 @@ class VideoSlideHandler extends SlideHandler
             ]);
         });
     }
-
-    public function needed_medias()
-    {
-        return $this->module->getOption('privileges.needs_media', false);
-    }
 }

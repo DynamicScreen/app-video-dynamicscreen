@@ -21,9 +21,10 @@
       "description": "Diffuse une vidéo.",
       "options": {
         "media-picker": {
-          "label": "Video à Diffuser",
-          "help": "help text"
-        }
+          "label": "Video à Diffuser"
+        },
+        "volume": "Volume",
+        "mute": "Mute"
       }
     }
   }

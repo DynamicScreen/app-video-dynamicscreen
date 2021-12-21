@@ -1,33 +1,22 @@
 import {
-  BaseContext,
-  AssetDownload,
-  IAssetsStorageAbility,
-  IGuardsManager,
   ISlideContext,
   IPublicSlide,
-  SlideModule
+  IAssetsStorageAbility,
+  IAssetDownload,
+  SlideModule, VueInstance
 } from "dynamicscreen-sdk-js";
-
-import i18next from "i18next";
-
-const en = require("../../languages/en.json");
-const fr = require("../../languages/fr.json");
 
 export default class VideoSlideModule extends SlideModule {
   constructor(context: ISlideContext) {
     super(context);
   }
 
-  trans(key: string) {
-    return i18next.t(key);
-  };
-
   async onReady() {
     console.log('Video working to be ready...')
 
     // const guard = this.context.guardManager.add('ready', this.context.slide.id);
     await this.context.assetsStorage().then(async (ability: IAssetsStorageAbility) => {
-      await ability.download(this.context.slide.data.url, (assetDownload: AssetDownload) => {
+      await ability.download(this.context.slide.data.url, (assetDownload: IAssetDownload) => {
         assetDownload.onProgress.subscribe((progress, ev) => {
           console.log('progress: ',  progress);
           ev.unsub();
@@ -46,45 +35,13 @@ export default class VideoSlideModule extends SlideModule {
     return true;
   };
 
-  onMounted() {
-    console.log('VIDEO: onMounted')
-  }
-
-  onUpdated() {
-    console.log('VIDEO: onUpdated')
-  }
-
-  initPlayer() {
-
-  };
-
-  initI18n() {
-    i18next.init({
-      fallbackLng: 'en',
-      lng: 'fr',
-      resources: {
-        en: { translation: en },
-        fr: { translation: fr },
-      },
-      debug: true,
-    }, (err, t) => {
-      if (err) return console.log('something went wrong loading translations', err);
-    });
-  };
-
-  // @ts-ignore
-  setup(props, ctx) {
-    const { h, ref, reactive, computed} = ctx;
-    let slide = reactive(props.slide) as IPublicSlide;
-    const context = reactive(props.slide.context) as ISlideContext;
+  setup(props: Record<string, any>, vue: VueInstance, context: ISlideContext) {
+    const { h, ref, reactive, computed} = vue;
+    let slide = reactive(this.context.slide) as IPublicSlide;
     const url = ref("");
 
-    this.context = context
-
-    context.onPrepare(async () => {
-      await context.assetsStorage().then(async (ability: IAssetsStorageAbility) => {
-        this.initI18n();
-        this.initPlayer();
+    this.context.onPrepare(async () => {
+      await this.context.assetsStorage().then(async (ability: IAssetsStorageAbility) => {
         url.value = await ability.getDisplayableAsset(slide.data.url).then((asset) => asset.displayableUrl());
       });
     });
@@ -97,14 +54,14 @@ export default class VideoSlideModule extends SlideModule {
       return [{ width: '100%' }];
     });
 
-    context.onReplay(async () => {
+    this.context.onReplay(async () => {
       console.log('VIDEO: onReplay')
 
       //@ts-ignore
       document.getElementById('video').play();
     });
 
-    context.onPlay(async () => {
+    this.context.onPlay(async () => {
       console.log('VIDEO: onPlay', url.value)
 
       //@ts-ignore
@@ -115,7 +72,7 @@ export default class VideoSlideModule extends SlideModule {
     //   console.log('VIDEO: onPause')
     // });
 
-    context.onEnded(async () => {
+    this.context.onEnded(async () => {
       console.log('VIDEO: onEnded')
 
       //@ts-ignore

@@ -4,5 +4,10 @@
       "DynamicScreen\\Video\\": "src/"
     }
   },
-  "require": {}
+  "authors": [
+    {
+      "name": "DynamicScreen",
+      "email": "bonjour@dynamicscreen.com"
+    }
+  ]
 }

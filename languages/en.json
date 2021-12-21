@@ -21,9 +21,10 @@
       "description": "Display a video, very basic.",
       "options": {
         "media-picker": {
-          "label": "Video to broadcast",
-          "help": "help text"
-        }
+          "label": "Video to broadcast"
+        },
+        "volume": "Volume",
+        "mute": "Mute"
       }
     }
   }
