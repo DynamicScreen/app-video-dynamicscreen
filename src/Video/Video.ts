@@ -43,6 +43,7 @@ export default class VideoSlideModule extends SlideModule {
     const url = ref("");
 
     this.context.onPrepare(async () => {
+      console.log('IN onPrepare callback (video)')
       await this.context.assetsStorage().then(async (ability: IAssetsStorageAbility) => {
         url.value = await ability.downloadAndGet(slide.data.url).then((asset) => asset.displayableUrl());
       });
@@ -55,38 +56,32 @@ export default class VideoSlideModule extends SlideModule {
         this.player.onPaused.sub(() => {
           console.log('Video Player: onPaused')
 
-          this.context.playbackManager.pause();
+          // this.context.playbackManager.pause();
         });
         this.player.onPlayed.sub(() => {
           console.log('Video Player: onPlayed')
-
-
-          this.context.playbackManager.play();
+          // this.context.playbackManager.play();
         });
         this.player.onEnded.sub(() => {
           console.log('Video Player: onEnded')
 
           this.player?.stop();
+          this.context.playbackManager.play();
+
         });
       }).catch((err) => console.log('ability error: ', err));
     });
 
-    const videoStyle = computed(() => {
-      if (slide.data.orientation === 0 || slide.data.orientation === 180) {
-        return [{ height: '100%' }];
-      }
-
-      return [{ width: '100%' }];
-    });
-
     this.context.onReplay(async () => {
-      console.log('VIDEO: onReplay')
+      console.log('GOLEM (video): onReplay')
       await this.player?.play();
     });
 
     this.context.onPlay(async () => {
-      console.log('VIDEO: onPlay', url.value)
-      await this.player?.play()
+      console.log('GOLEM (video): onPlay callback', url.value)
+      const a = await this.player?.play();
+      this.context.playbackManager.pause();
+      console.log('player is played now: ', a)
     });
 
     this.context.onResume(async () => {
@@ -101,8 +96,7 @@ export default class VideoSlideModule extends SlideModule {
 
     this.context.onEnded(async () => {
       console.log('GOLEM (video): onEnded callback')
-      await this.player?.pause();
-      this.player?.setCurrentTime(0);
+      await this.player?.stop();
     });
 
     return () => h("div", {
@@ -113,7 +107,7 @@ export default class VideoSlideModule extends SlideModule {
       }, [
         h("div", {
           id: "video-player",
-          style: videoStyle,
+          style: { width: '100%', height: '100%' },
         }),
       ]),
     ])
