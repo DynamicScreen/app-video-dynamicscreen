@@ -12,7 +12,6 @@
     "url": "git+https://github.com/cormarti/app-video-dynamicscreen.git"
   },
   "dependencies": {
-    "i18next": "^20.4.0",
     "webpack": "^5.50.0"
   },
   "peerDependencies": {

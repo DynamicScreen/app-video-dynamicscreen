@@ -6,10 +6,6 @@ import {
 } from "dynamicscreen-sdk-js";
 
 export default class VideoOptionsModule extends SlideOptionsModule {
-  constructor(context: ISlideOptionsContext) {
-    super(context);
-  }
-
   async onReady() {
     return true;
   };
@@ -25,10 +21,10 @@ export default class VideoOptionsModule extends SlideOptionsModule {
         h(MediaPicker, { type: 'video', ...update.option("video-medias") })
       ]),
       h(FieldsRow, {}, [
-        h(Toggle, { class: 'flex-1', ...update.option("mute") }, this.t('modules.video.options.mute')),
         h(Field, { class: 'flex-1', label: this.t('modules.video.options.volume') }, [
           h(NumberInput, { min: 0, max: 100, default: 50, ...update.option("volume") })
-        ])
+        ]),
+        h(Toggle, { class: 'flex-1', ...update.option("mute") }, this.t('modules.video.options.mute'))
       ])
     ];
   }
