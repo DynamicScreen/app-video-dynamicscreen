@@ -15,7 +15,7 @@ export default class VideoSlideModule extends SlideModule {
   async onReady() {
     // const guard = this.context.guardManager.add('ready', this.context.slide.id);
     await this.context.assetsStorage().then(async (ability: IAssetsStorageAbility) => {
-      await ability.download(this.context.slide.data.url, (assetDownload: IAssetDownload) => {
+      await ability.downloadAndGet(this.context.slide.data.url, (assetDownload: IAssetDownload) => {
         assetDownload.onProgress.subscribe((progress, ev) => {
           ev.unsub();
         });
