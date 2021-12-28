@@ -49,26 +49,16 @@ export default class VideoSlideModule extends SlideModule {
       });
 
       await this.context.videoPlayback().then(async (ability: IVideoPlaybackAbility) => {
-        this.player = (await ability.createVideoPlayer(url.value))!;
+        this.player = await ability.createVideoPlayer(url.value);
         this.player.setBoundaries(document.getElementById('video-player'))
         await this.player.prepare();
+        slide.setDuration(this.player.getDuration());
         this.player.setVolume(volume.value)
-        this.player.onPaused.sub(() => {
-          console.log('Video Player: onPaused')
 
-          // this.context.playbackManager.pause();
-        });
-        this.player.onPlayed.sub(() => {
-          console.log('Video Player: onPlayed')
-          // this.context.playbackManager.play();
-        });
         this.player.onEnded.sub(() => {
-          console.log('Video Player: onEnded')
-
           this.player?.stop();
-          this.context.playbackManager.play();
-
         });
+        
       }).catch((err) => console.log('ability error: ', err));
     });
 
@@ -80,8 +70,7 @@ export default class VideoSlideModule extends SlideModule {
     this.context.onPlay(async () => {
       console.log('GOLEM (video): onPlay callback', url.value)
       const a = await this.player?.play();
-      this.context.playbackManager.pause();
-      console.log('player is played now: ', a)
+      //console.log('player is played now: ', a)
     });
 
     this.context.onResume(async () => {
