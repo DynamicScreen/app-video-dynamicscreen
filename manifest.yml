@@ -24,6 +24,7 @@ modules:
     logo: fa fa-play
     type: slide
     options:
+      no_duration: true
       privileges:
         needs_media:
           - video-medias
