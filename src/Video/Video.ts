@@ -15,7 +15,7 @@ export default class VideoSlideModule extends SlideModule {
   async onReady() {
     // const guard = this.context.guardManager.add('ready', this.context.slide.id);
     await this.context.assetsStorage().then(async (ability: IAssetsStorageAbility) => {
-      await ability.downloadAndGet(this.context.slide.data.url, (assetDownload: IAssetDownload) => {
+      await ability.downloadAndGet(this.context.slide.data.url, {callback: (assetDownload: IAssetDownload) => {
         assetDownload.onProgress.subscribe((progress, ev) => {
           ev.unsub();
         });
@@ -23,7 +23,7 @@ export default class VideoSlideModule extends SlideModule {
         assetDownload.onCompleted.subscribe((asset, ev) => {
           ev.unsub();
         });
-      });
+      }, noRetry: false});
     });
 
     const playerExists = !!this.player;
@@ -56,6 +56,7 @@ export default class VideoSlideModule extends SlideModule {
         this.player.setVolume(volume.value)
 
         this.player.onEnded.sub(() => {
+          this.context.playbackManager.next();
           this.player?.stop();
         });
         
@@ -69,8 +70,8 @@ export default class VideoSlideModule extends SlideModule {
 
     this.context.onPlay(async () => {
       console.log('GOLEM (video): onPlay callback', url.value)
+      this.context.playbackManager.preventNextSlide(7);
       const a = await this.player?.play();
-      //console.log('player is played now: ', a)
     });
 
     this.context.onResume(async () => {
@@ -81,11 +82,6 @@ export default class VideoSlideModule extends SlideModule {
     this.context.onPause(async () => {
       console.log('GOLEM (video): onPause callback')
       await this.player?.pause();
-    });
-
-    this.context.onEnded(async () => {
-      console.log('GOLEM (video): onEnded callback')
-      await this.player?.stop();
     });
 
     return () => h("div", {

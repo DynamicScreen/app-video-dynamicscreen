@@ -23,6 +23,7 @@ class VideoSlideHandler extends SlideHandler
             $this->addSlide([
                 'url' => Arr::get($media, 'url'),
                 'media_id' => Arr::get($media, 'id'),
+                'expired_at' => Arr::get($media,  'expired_at'),
                 'volume' => $slide->getOption('volume', 50),
                 'mute' => $slide->getOption('mute', false),
             ]);
